@@ -135,8 +135,8 @@ function select_json_file() {
         const reader = new FileReader();
         reader.onload = function (e) {
             const json = e.target.result;
-            if (window.gml_Script_gml_receive_json_from_file) {
-                window.gml_Script_gml_receive_json_from_file(json);
+            if (window.gml_Script_receive_json_from_file) {
+                window.gml_Script_receive_json_from_file(json);
             }
         };
         reader.readAsText(file);
@@ -148,7 +148,7 @@ function select_json_file() {
 function paste_json_input() {
     const input = prompt("Paste your JSON level data:");
     if (input && window.gml_Script_receive_json_from_file) {
-        window.gml_Script_gml_receive_json_from_file(input);
+        window.gml_Script_receive_json_from_file(input);
     }
 }
 </script>
@@ -160,3 +160,4 @@ function paste_json_input() {
     
 
 </html>
+
