@@ -147,7 +147,7 @@ function select_json_file() {
 
 function paste_json_input() {
     const input = prompt("Paste your JSON level data:");
-    if (input && window.gml_Script_gml_receive_json_from_file) {
+    if (input && window.gml_Script_receive_json_from_file) {
         window.gml_Script_gml_receive_json_from_file(input);
     }
 }
@@ -158,4 +158,5 @@ function paste_json_input() {
 
     <!-- Custom PostBody code is injected here -->
     
+
 </html>
