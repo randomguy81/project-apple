@@ -18,7 +18,48 @@
         <title>apple</title>
 
         <!-- Custom PreStyle code is injected here -->
-        
+        <script>
+function download_json_file(json) {
+    const blob = new Blob([json], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "level.json";
+    document.body.appendChild(a);
+    a.click();
+    URL.revokeObjectURL(url);
+    a.remove();
+}
+
+function select_json_file() {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = ".json";
+
+    input.onchange = function () {
+        const file = input.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const json = e.target.result;
+            if (window.gml_Script_gml_receive_json_from_file) {
+                window.gml_Script_gml_receive_json_from_file(json);
+            }
+        };
+        reader.readAsText(file);
+    };
+
+    input.click();
+}
+
+function paste_json_input() {
+    const input = prompt("Paste your JSON level data:");
+    if (input && window.gml_Script_gml_receive_json_from_file) {
+        window.gml_Script_gml_receive_json_from_file(input);
+    }
+}
+</script>
 
         <!-- Set the background colour of the document -->
         <style>
@@ -102,7 +143,7 @@
         </div>
 
         <!-- Run the game code -->
-        <script type="text/javascript" src="html5game/apple.js?cachebust=1314237474"></script>
+        <script type="text/javascript" src="html5game/apple.js?cachebust=1742234042"></script>
 
         <!-- Builtin injector for injecting runner path -->
         
